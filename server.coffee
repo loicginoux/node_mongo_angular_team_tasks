@@ -22,7 +22,7 @@ LocalStrategy = (require 'passport-local').Strategy
 app           = express()
 
 # all environments
-app.set "port", process.env.PORT or 3000
+app.set "port", process.env.PORT or 3001
 app.set "views", config.viewsDir
 app.engine 'ejs', engine
 app.set "view engine", "ejs"
@@ -97,6 +97,8 @@ teamExist = (req, res, next) ->
 
 # Routing
 app.get "/", appCtrl.index
+# app.get('/partials/:name', appCtrl.partials)
+
 app.get "/login", userCtrl.new
 app.post '/login', (req, res, next) ->
 	console.log "here"

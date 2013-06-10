@@ -1,2 +1,34 @@
+<% layout('../layouts/application') -%>
 
-<h1>name: <%= team.name%></h1>
+
+ <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <ng-view></ng-view>
+
+    <!-- Add your site or application content here -->
+<!--     <div class="container">
+      <div class="navbar" ng-controller="NavbarCtrl">
+        <div class="navbar-inner">
+          <a class="brand" href="#/">Angular Store</a>
+          <ul class="nav">
+            <li ng-class="{active: routeIs('/')}"><a href="#/">Home</a></li>
+            <li ng-class="{active: routeIs('/how-it-works')}"><a href="#/how-it-works">How it works</a></li>
+          </ul>
+
+          <ul class="nav pull-right">
+            <li ng-class="{active: routeIs('/add')}"><a href="#/add">Add New Component</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div> -->
+
