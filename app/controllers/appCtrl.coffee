@@ -7,6 +7,3 @@ exports.index = (req, res) ->
 	else
 		res.redirect "/login"
 
-exports.partials = (req, res) ->
-	name = req.params.name
-	res.render('partials/' + name)

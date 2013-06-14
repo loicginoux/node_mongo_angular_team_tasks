@@ -3,8 +3,8 @@ auth     = require "../helpers/auth"
 
 
 User = new mongoose.Schema(
-	name: String
-	email: String
+	name: {type: String, required:true}
+	email: {type: String, required:true}
 	team_id: String
 	role: String
 	salt: String

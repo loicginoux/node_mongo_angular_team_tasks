@@ -1,0 +1,71 @@
+<div class="sidebar">
+  <tabs>
+    <pane title="projects">
+      <ul class="projects noFolder" ng-controller="ProjectsCtrl">
+        <project ng-repeat="project in projects"></project>
+        <li>
+          <div class="create small">
+            <form>
+              <input type="text" ng-model="projectName" placeholder="Add project list" ui-keypress="{13:'addProject($event)'}">
+              <i>&amp;</i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </pane>
+    <pane title="team">
+      <ul class="people" ng-controller="UsersCtrl">
+        <div class="users">
+          <li ng-repeat="user in users" class="user item">
+            <a href="#">
+              <img src="/images/andy.jpg"></img>
+              <p>{{user.name}}</p>
+            </a>
+
+          </li>
+        </div>
+        <div class="invitations">
+
+          <li>
+            <div class="create small">
+              <input type="text" placeholder="Add email for invitation">
+              <i>&amp;</i>
+            </div>
+          </li>
+        </div>
+      </ul>
+
+    </pane>
+    <pane title="me">
+      <ul class="settings">
+        <li class="help">
+          <a href="#"><i>?</i><span>Help</span></a>
+        </li>
+        <li class="profile">
+          <a href="#"><i>U</i><span>Profile</span></a>
+        </li>
+        <li class="account">
+          <a href="#"><i>%</i><span>Account &amp; Billing</span></a>
+        </li>
+        <li class="logout">
+          <a href="/logout"><i>Q</i><span>Logout</span></a>
+        </li>
+      </ul>
+    </pane>
+  </tabs>
+</div>
+
+
+<div class="tasks projectTasks" ng-controller="ProjectTasksCtrl">
+  <div ng-show="selectedProject">
+    <ul class="tags"></ul>
+    <ul class="taskList">
+      <task ng-repeat="task in tasks"></task>
+    </ul>
+    <div class="create">
+      <input type="text" placeholder="Add task" ng-model="newTask" ui-keypress="{13:'addTask($event)'}">
+      <i>&amp;</i>
+    </div>
+  </div>
+</div>
+

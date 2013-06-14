@@ -1,6 +1,12 @@
 'use strict';
 
-angular.module('londy', [])
+// modules definition
+angular.module('londyServices', ['ngResource'])
+angular.module('londy', ["londyServices", "ui.directives"])
+
+
+// app configuration
+angular.module('londy')
   .config(function ($routeProvider) {
     $routeProvider
       // .when('/', {
@@ -8,7 +14,7 @@ angular.module('londy', [])
       //   controller: 'ListComponentsCtrl'
       // })
       .when('/', {
-        templateUrl: '/views/projects.html',
+        templateUrl: '/views/app.html',
         controller: 'MainCtrl'
       })
       .otherwise({

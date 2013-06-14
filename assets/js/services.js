@@ -1,23 +1,47 @@
-'use strict';
+// 'use strict';
 
-
-// angular.module('mongolab', ['ngResource']).
-// factory('Component', function($resource) {
-//   var Component = $resource('https://api.mongolab.com/api/1/databases' +
-//     '/angular_component_store/collections/components/:id',
-//     { apiKey: 'Fwp5JA8YbuP-ly6QeZ0mpR8iPO4rwyp7' }, {
-//       update: { method: 'PUT' }
+// angular.module('londyServices', ['ngResource'])
+// .factory('Project', function($resource) {
+//   var Project = $resource('/team/:team_id/projects/:id',
+//     {
+//     	team_id: '51b482ce537cd62ab5000001',
+//     	id: '@id',
+//     }, {
+//       update: { method: 'PUT' },
+//       create: {method: 'POST'}
 //     }
 //     );
+//   return Project;
+// })
+// .factory('Task', function($resource) {
+//   var Task = $resource('/tasks/:id',
+//     {
+//       team_id: '51b482ce537cd62ab5000001',
+//       id: '@id',
+//     }, {
+//       update: { method: 'PUT' },
+//       create: {method: 'POST'}
+//     }
+//     );
+//   return Task;
+// })
+// .factory('pubsub', function() {
+//   var o = $({});
 
-//   Component.prototype.update = function(compo) {
-//     return Component.update({id: this._id.$oid},
-//       angular.extend({}, this, {_id:undefined}), compo);
+//   $.subscribe = function() {
+//     o.on.apply(o, arguments);
 //   };
 
-//   Component.prototype.destroy = function(compo) {
-//     return Component.remove({id: this._id.$oid}, compo);
+//   $.unsubscribe = function() {
+//     o.off.apply(o, arguments);
 //   };
 
-//   return Component;
+//   $.publish = function() {
+//     o.trigger.apply(o, arguments);
+//   };
+
+//   return $;
+// })
+// .service("taskParser", function(){
+
 // });

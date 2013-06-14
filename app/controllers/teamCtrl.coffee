@@ -1,6 +1,6 @@
-auth   = require "../helpers/auth"
-Team   = require "../models/Team"
-User   = require "../models/User"
+auth    = require "../helpers/auth"
+Team    = require "../models/Team"
+User    = require "../models/User"
 
 exports.new = (req, res) ->
 	res.render("team/register")
@@ -31,4 +31,5 @@ exports.create = (req, res, next) ->
 
 exports.show = (req, res) ->
 	Team.findById(req.params.id).exec (err, team) ->
+		throw err if err
 		res.render "team/show", {team: team}

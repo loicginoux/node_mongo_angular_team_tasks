@@ -1,0 +1,11 @@
+<li class="project item" ng-class="{edit: editable, selected: project._id==selectedProject }" ng-transclude>
+	<a ng-click="removeProject(project._id)" class="remove"><i>*</i></a>
+	<a ng-click="selectProject(project._id)">
+		<i>l</i>
+		<span>{{project.name}}</span>
+	</a>
+	<input value="{{project.name}}" onfocus="this.value = this.value;"
+		ui-event="{ blur : 'switchEditable($event)' }"
+		ui-keypress="{13:'updateAndSwitch(project._id, $event)'}">
+	<a  ng-click="switchEditable($event)" class="edit">y</a>
+</li>

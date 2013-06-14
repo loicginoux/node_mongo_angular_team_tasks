@@ -9,6 +9,8 @@ engine        = require 'ejs-locals'
 config        = require "./config"
 userCtrl      = require config.controllerDir + "/userCtrl"
 teamCtrl      = require config.controllerDir + "/teamCtrl"
+projectCtrl   = require config.controllerDir + "/projectCtrl"
+taskCtrl      = require config.controllerDir + "/taskCtrl"
 appCtrl       = require config.controllerDir + "/appCtrl"
 User          = require config.modelDir + "/User"
 Team          = require config.modelDir + "/Team"
@@ -22,7 +24,7 @@ LocalStrategy = (require 'passport-local').Strategy
 app           = express()
 
 # all environments
-app.set "port", process.env.PORT or 3001
+app.set "port", process.env.PORT or 3004
 app.set "views", config.viewsDir
 app.engine 'ejs', engine
 app.set "view engine", "ejs"
@@ -32,7 +34,7 @@ app.use express.cookieParser('keyboard cat')
 app.use express.bodyParser()
 app.use express.methodOverride()
 app.use express.session(
-	secret: 'SECRET'
+	secret: '0GBlJZ9EKBt2Zbi2flRPvztczCewBxXKASqwdasdQWFRYHFSG'
 	cookie:
 		maxAge: 60000
 )
@@ -45,7 +47,11 @@ app.use require("less-middleware")(src: __dirname + "/assets")
 app.use express.static(path.join(__dirname, "assets"))
 
 # development only
-app.use express.errorHandler()  if "development" is app.get("env")
+if "development" is app.get("env")
+	app.use express.errorHandler()
+	edt = require 'express-debug'
+	edt app, {depth: 3}
+
 
 
 # Database and Models
@@ -84,6 +90,24 @@ userExist = (req, res, next)->
 				console.log "User already exists!"+ user.email
 				res.redirect "/register"
 
+isAuthenticated = (req, res, next)->
+	if req.isAuthenticated()
+		next()
+	else
+		res.redirect "/login"
+
+isUserInTeam = (req, res, next)->
+	next()
+	# console.log req.user
+	# if req.user
+	# 	user = req.user
+	# 	if user.team_id == req.params.team_id
+	# 		next()
+	# 	else
+	# 		res.json { error: "wrong team."}
+	# else
+	# 	res.json { error: "not authenticated"}
+
 
 teamExist = (req, res, next) ->
   Team.count
@@ -115,12 +139,25 @@ app.post '/login', (req, res, next) ->
 					res.redirect "/"
 	)(req,res,next)
 
+# authentication routes
 app.get "/register", teamCtrl.new
 app.post "/register", userExist, teamExist, teamCtrl.create
 app.get "/team/:id", teamExist, teamCtrl.show
 app.get "/logout", (req, res) ->
 	req.logout()
 	res.redirect "/login"
+
+# projects routes
+app.get "/team/:team_id/projects", isUserInTeam, projectCtrl.index
+app.post "/team/:team_id/projects", isUserInTeam, projectCtrl.create
+app.put "/team/:team_id/projects/:project_id", isUserInTeam, projectCtrl.update
+app.delete "/team/:team_id/projects/:project_id", isUserInTeam, projectCtrl.destroy
+
+# tasks route
+app.get "/tasks", isUserInTeam, taskCtrl.index
+app.post "/tasks", isUserInTeam, taskCtrl.create
+app.put "/tasks/:task_id", isUserInTeam, taskCtrl.update
+app.delete "/tasks/:task_id", isUserInTeam, taskCtrl.destroy
 
 
 

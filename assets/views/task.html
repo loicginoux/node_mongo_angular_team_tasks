@@ -1,0 +1,25 @@
+<li class="task" ng-class="{complete: task.completed}">
+	<a href="" class="checkbox" ng-click="task.completed = !task.completed"></a>
+	<a href="" class="remove" ng-click="removeTask(task._id)"><i>*</i></a>
+	<h1>
+		<a href="" class="title">{{task.content}}</a>
+		<input value="{{task.content}} ">
+		<span>
+
+			<a href="" class="indicator due due_date" ng-show="task.end_date" ng-class="{overdue: task.isOverdue}">
+				<i>t</i>
+				<strong>{{task.end_date}}</strong>
+			</a>
+			<a href="" class="indicator due assignee" ng-show="task.assignee_id">
+				<i>U</i>
+				<strong>{{task.assignee_id}}</strong>
+			</a>
+
+			<a href="" class="indicator due comments" ng-show="task.nb_comments != 0">
+				<i>w</i>
+				<strong>{{task.nb_comments}}</strong>
+			</a>
+		</span>
+	</h1>
+	<a href="" class="showDetails" ng-click="showComments(task._id)"><i>w</i></a>
+</li>

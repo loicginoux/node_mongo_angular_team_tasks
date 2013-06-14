@@ -160,7 +160,7 @@ button {
 @font-face {
   font-family: Pictos;
   src: url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.eot');
-  src: local('â˜º'), url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.woff') format('woff'), url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.ttf') format('truetype'), url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.svg#webfontphKv1xv9') format('svg');
+  src: local('â˜º'), url('/css/pictos-web.woff') format('woff'), url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.ttf') format('truetype'), url('http://dl.dropbox.com/u/2360190/project/assets/less/../font/pictos-web.svg#webfontphKv1xv9') format('svg');
   font-weight: normal;
   font-style: normal;
 }

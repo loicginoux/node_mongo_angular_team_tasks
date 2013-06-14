@@ -1,7 +1,7 @@
 mongoose = require 'mongoose'
 
 Team = new mongoose.Schema(
-  name: String
+  name: {type: String, required:true}
 )
 
 
