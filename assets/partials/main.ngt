@@ -1,5 +1,0 @@
-<span ng-bind="1+2">Loading</span>
-
-<div class="wrapper">
-    <h1>Hello from <span ng-bind="name">...</span></h1>
-</div>
